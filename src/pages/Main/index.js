@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
 import api from '../../services/api';
-import { Header, List, ListItem } from './styles';
+import { Container, Header, List, ListItem, Button } from './styles';
 
 export default function Main() {
   const [totalPlanets, setTotalPlanets] = useState(61);
+  const [loading, setLoading] = useState(false);
   const [planet, setPlanet] = useState({
     climate: 'unknow',
     name: 'Planet name',
@@ -30,18 +32,46 @@ export default function Main() {
     const max = Math.floor(totalPlanets);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+  //  Consulta API com número aleatório e armazena com setPlanet
+  async function handleNext() {
+    setLoading(true);
+    const response = await api.get(`/${getRandomNumber()}`);
+    const data = {
+      climate: response.data.climate,
+      name: response.data.name,
+      population: response.data.population,
+      terrain: response.data.terrain,
+      films: response.data.films.length,
+    };
+    setPlanet(data);
+    setLoading(false);
+  }
 
   return (
     <>
-      <Header>{planet.name}</Header>
-      <List>
-        <ListItem>Population: {planet.population}</ListItem>
-        <ListItem>Climate: {planet.climate}</ListItem>
-        <ListItem>Terrain: {planet.terrain}</ListItem>
-        <ListItem>
+      <Container>
+        <Header>{planet.name}</Header>
+        <List>
+          <ListItem>
+            <strong>Population: </strong>
+            {planet.population}
+          </ListItem>
+          <ListItem>
+            <strong>Climate: </strong>
+            {planet.climate}
+          </ListItem>
+          <ListItem>
+            <strong>Terrain: </strong>
+            {planet.terrain}
+          </ListItem>
+        </List>
+        <footer>
           Featured in {planet.films} {planet.films === 1 ? 'film' : 'films'}
-        </ListItem>
-      </List>
+        </footer>
+      </Container>
+      <Button loading={loading} onClick={handleNext}>
+        {loading ? <FaSpinner size="14px" /> : 'Next'}
+      </Button>
     </>
   );
 }

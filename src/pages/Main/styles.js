@@ -70,16 +70,16 @@ export const Button = styled.button.attrs(props => ({
   background: #000;
   box-shadow: 0 0 20px rgba(220, 23, 22, 0.1);
   border: 1px solid #ffe62c;
+  transition: color 0.5s;
 
   &:hover {
     cursor: pointer;
-    color: #dc1716;
+
+    background: rgba(255, 0, 0, 0.1);
   }
 
   &[disabled] {
     cursor: not-allowed;
-
-    color: #dc1716;
   }
 
   ${props =>

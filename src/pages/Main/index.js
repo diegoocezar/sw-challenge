@@ -4,6 +4,8 @@ import { FaSpinner } from 'react-icons/fa';
 import api from '../../services/api';
 import { Container, Header, List, ListItem, Button } from './styles';
 
+import getRandomNumber from '../../components/randomNumber/index';
+
 export default function Main() {
   const [totalPlanets, setTotalPlanets] = useState(61);
   const [loading, setLoading] = useState(false);
@@ -15,27 +17,32 @@ export default function Main() {
     films: 'N',
   });
 
-  // Verifica total de planetas na API e atualiza o valor inicial
+  // Verifica chave "totalPlanet" no LocalStorage, se houver dado, atualiza
+  //  estado, se não houver, seta valor padrão.
   useEffect(() => {
-    async function verifyTotalPlanets() {
-      const response = await api.get(`/`);
-      const { count } = response.data;
-      setTotalPlanets(count);
-    }
+    const storageTotalPlanets = localStorage.getItem('totalPlanets');
 
-    verifyTotalPlanets();
+    if (storageTotalPlanets) {
+      setTotalPlanets(JSON.parse(storageTotalPlanets));
+    } else {
+      localStorage.setItem('totalPlanets', JSON.stringify(totalPlanets));
+    }
+  }, [totalPlanets]);
+
+  // Verifica chave "Planet" no LocalStorage, se houver dado, carrega na tela
+  useEffect(() => {
+    const storagePlanet = localStorage.getItem('planet');
+
+    if (storagePlanet) {
+      setPlanet(JSON.parse(storagePlanet));
+    }
   }, []);
 
-  // Gera número aleatório para consulta do planeta
-  function getRandomNumber() {
-    const min = Math.ceil(1);
-    const max = Math.floor(totalPlanets);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
   //  Consulta API com número aleatório e armazena com setPlanet
   async function handleNext() {
     setLoading(true);
-    const response = await api.get(`/${getRandomNumber()}`);
+
+    const response = await api.get(`/${getRandomNumber(totalPlanets)}/`);
     const data = {
       climate: response.data.climate,
       name: response.data.name,
@@ -45,6 +52,7 @@ export default function Main() {
     };
     setPlanet(data);
     setLoading(false);
+    localStorage.setItem('planet', JSON.stringify(data));
   }
 
   return (

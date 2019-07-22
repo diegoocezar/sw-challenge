@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import background from '../assets/images/stars.png';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
@@ -19,4 +20,11 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  body {
+    background-image: url(${background});
+    background-repeat: no-repeat;
+    background-size: cover;
+  };
+
 `;

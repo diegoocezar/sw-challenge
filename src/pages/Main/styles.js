@@ -3,12 +3,15 @@ import styled, { keyframes, css } from 'styled-components';
 export const Container = styled.div`
   max-width: 280px;
   height: 280px;
-  background: rgba(255, 255, 255, 0.5);
+  background: #000;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(220, 23, 22, 0.1);
   margin: 80px auto 40px;
+  border: 1px solid #ffe62c;
+  border-top: none;
   footer {
     text-align: center;
+    color: #ffe62c;
   }
 `;
 
@@ -17,7 +20,8 @@ export const Header = styled.h1`
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  border-radius: 10px 10px 0 0;
+  background-color: #ffe62c;
 `;
 
 export const List = styled.ul`
@@ -30,9 +34,11 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   display: inline-block;
   margin: 10px 15px;
+  color: #fff;
   strong {
     font-weight: bold;
     font-size: 1.1rem;
+    color: #dc1716;
   }
 `;
 
@@ -60,20 +66,20 @@ export const Button = styled.button.attrs(props => ({
   height: 30px;
   border-radius: 10px;
   border: none;
-  color: #000;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  color: #fff;
+  background: #000;
+  box-shadow: 0 0 20px rgba(220, 23, 22, 0.1);
+  border: 1px solid #ffe62c;
 
   &:hover {
     cursor: pointer;
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid #fff;
+    color: #dc1716;
   }
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: 0.6;
+
+    color: #dc1716;
   }
 
   ${props =>

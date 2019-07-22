@@ -10,6 +10,14 @@ export const Container = styled.div`
     width: 80vw;
     max-width: 600px;
   }
+  strong {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #dc1716;
+    margin-top: 30px;
+    display: block;
+  }
 `;
 
 const rotate = keyframes`

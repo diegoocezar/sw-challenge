@@ -1,68 +1,85 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Star Wars Challenge
 
-## Available Scripts
+## Visão Geral
 
-In the project directory, you can run:
+A B2W gostaria de fazer uma brincadeira com seus associados, que são aficionados por Star Wars. O jogo consiste em, dado um planeta aleatório da franquia, exibir como seria o clima, o terreno e em quantos filmes da franquia ele apareceu.
 
-### `npm start`
+Para auxiliar quem for apresentar a brincadeira, queremos desenvolver uma aplicação que pegue aleatoriamente um planeta da franquia e exiba seus dados para servir como cola.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Uma equipe de UX especializada desenvolveu a proposta de interface disponível nesse [link](https://lh3.googleusercontent.com/tubJ22pBao1DQy3o0VfBjcmrN4epO7Q04KVk3D1JeVSIuJwvoDru-XqtxDnHsX7yeZz-qdkXpb2HZNrc5FFV9XKezGuzERTa2jagCy5Ht3sEl8JBHzJrCxn_8SkjYqmfGfJcN_Rb)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Tecnologias
 
-### `npm test`
+- HTML5
+- CSS
+
+  - [Styled Components](https://www.styled-components.com/)
+  - [Reset css](https://github.com/zacanger/styled-reset)
+
+- JavaScript
+- Reactjs
+
+  - [React Hooks](https://pt-br.reactjs.org/docs/hooks-intro.html)
+  - Jest
+
+- Outros pacotes e ferramentas
+  - [Axios](https://github.com/axios/axios)
+  - [Eslint](https://eslint.org/)
+  - [EditorConfig](https://editorconfig.org/)
+
+### API
+
+A API utilizada para obter os dados está disponível em: [SWAPI](https://swapi.co/).
+
+## Rodando o projeto
+
+Primeiro você deve fazer um fork e depois clonar o projeto para que seja possível instalar as dependências e efetuar alterações no código em seu computador.
+
+Para executá-lo, basta instalar as dependências do projeto usando seu gerenciador de dependências.
+
+Ex:
+
+`yarn`
+
+ou
+
+`yarn install`
+
+Este projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app) e recomendo o uso do [Yarn](https://yarnpkg.com/en/) para o fluxo de desenvolvimento.
+
+### Scripts Disponíveis
+
+#### start
+
+Este comando inicia o projeto em ambiente de desenvolvimento, você pode acessá-lo pela URL [http://localhost:3000](http://localhost:3000) em seu browser de preferência.
+
+Ex:
+
+`yarn start`
+
+A página será recarregada sempre que uma alteração for salva.
+
+#### test
+
+O comando test usa o [Jest](https://jestjs.io/) para validar os testes definidos em arquivos \*.test.js.
+
+Ex:
+
+`yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### build
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O comando build cria o bundle com o código compilado para que seja feito o deploy da aplicação.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Ex:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn build`
 
-### `npm run eject`
+## Observações
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Durante o desenvolvimento do projeto optei por utilizar o Axios para auxiliar na criação de requisições a API;
+- No arquivo `routes.js` podem ser definidas as rotas para cada página que possa existir no futuro;
+- Removi as configurações do Eslint que vem por padrão, é possível verificar no arquivo `.eslintrc.js`;
